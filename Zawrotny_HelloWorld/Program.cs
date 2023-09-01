@@ -12,6 +12,19 @@ namespace Zawrotny_HelloWorld
         {
             //prints a message to the console. My name!!
             Console.WriteLine("Katiya Zawrotny");
+
+            //playing with addition, variables, and string concatenation
+            int x = 2;
+            int y = 3;
+            int sum;
+            sum = 2 + 3;
+            Console.WriteLine(x + "+" + y + " = " + sum);
+
+            //playing with loops
+            Console.WriteLine("Watch this! I can count to the sum!!");
+            for (int i = 1; i <= sum; i++) {
+                Console.WriteLine(i);
+            }
         }
     }
 }
