@@ -10,8 +10,8 @@ namespace Zawrotny_HelloWorld
     {
         static void Main(string[] args)
         {
-            //prints a message to the console
-            Console.WriteLine("Hello World!");
+            //prints a message to the console. My name!!
+            Console.WriteLine("Katiya Zawrotny");
         }
     }
 }
