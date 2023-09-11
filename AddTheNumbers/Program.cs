@@ -12,6 +12,7 @@ namespace AddTheNumbers
         {
             //initializing variables
             int result = 0;
+
             //loops 4 times to ask for user input and adds the ints to the result
             for (int i = 1; i <= 4; i++)
             {
