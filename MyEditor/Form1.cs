@@ -144,5 +144,9 @@ namespace MyEditor
             this.richTextBox.SelectionFont = newFont;
         }
 
+        private void richTextBox_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

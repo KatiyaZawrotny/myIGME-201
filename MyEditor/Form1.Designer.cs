@@ -180,6 +180,7 @@
             this.richTextBox.Size = new System.Drawing.Size(800, 393);
             this.richTextBox.TabIndex = 0;
             this.richTextBox.Text = "";
+            this.richTextBox.TextChanged += new System.EventHandler(this.richTextBox_TextChanged);
             // 
             // toolStrip
             // 
