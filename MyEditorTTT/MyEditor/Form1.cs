@@ -29,6 +29,9 @@ namespace MyEditor
             this.italicsToolStripMenuItem.Click += new EventHandler(ItalicsToolStripMenuItem__Click);
             this.underlineToolStripMenuItem.Click += new EventHandler(UnderlineToolStripMenuItem__Click);
 
+            this.mSSansSerifToolStripMenuItem.Click += new EventHandler(MSSansSerifToolStripMenuItem__Click);
+            this.timesNewRomanToolStripMenuItem.Click += new EventHandler(TimesNewRomanToolStripMenuItem__Click);
+
             this.toolStrip.ItemClicked += new ToolStripItemClickedEventHandler(ToolStrip__ItemClicked);
             this.Text = "MyEditor";
         }
@@ -51,6 +54,48 @@ namespace MyEditor
             }
 
             SetSelectionFont(fontStyle, !selectionFont.Bold);
+        }
+
+        private void ItalicsToolStripMenuItem__Click(object sender, EventArgs e)
+        {
+            FontStyle fontStyle = FontStyle.Italic;
+            Font selectionFont = null;
+
+            selectionFont = richTextBox.SelectionFont;
+            if (selectionFont == null)
+            {
+                selectionFont = richTextBox.Font;
+            }
+
+            SetSelectionFont(fontStyle, !selectionFont.Italic);
+        }
+
+        private void UnderlineToolStripMenuItem__Click(object sender, EventArgs e)
+        {
+            FontStyle fontStyle = FontStyle.Underline;
+            Font selectionFont = null;
+
+            selectionFont = richTextBox.SelectionFont;
+            if (selectionFont == null)
+            {
+                selectionFont = richTextBox.Font;
+            }
+
+            SetSelectionFont(fontStyle, !selectionFont.Underline);
+        }
+
+        private void MSSansSerifToolStripMenuItem__Click(object sender, EventArgs e)
+        {
+            Font newFont = new Font("MS Sans Serif", richTextBox.SelectionFont.Size, richTextBox.SelectionFont.Style);
+
+            richTextBox.SelectionFont = newFont;
+        }
+
+        private void TimesNewRomanStripMenuItem__Click(object sender, EventArgs e)
+        {
+            Font newFont = new Font("Times New Roman", richTextBox.SelectionFont.Size, richTextBox.SelectionFont.Style);
+
+            richTextBox.SelectionFont = newFont;
         }
 
         private void OpenToolStripMenuItem__Click(object sender, EventArgs e)
