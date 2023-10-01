@@ -1,13 +1,23 @@
-﻿using System;
+﻿using Microsoft.Win32;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Timers;
 
 namespace UT1_Exercise_4
 {
     internal class Program
     {
+        //set up for timer
+        static Timer timer;
+        static bool timeUp;
+
+        //declare chosen question/answer variables
+        static string sQuestion = "";
+        static string sAnswer = "";
+
         static void Main(string[] args)
         {
             //declare strings for the three questions
@@ -19,15 +29,14 @@ namespace UT1_Exercise_4
             string sAnswer2 = "42";
             string sAnswer3 = "What do you mean? African or European swallow?";
 
-            //declare chosen question/answer variables
-            string sQuestion;
-            string sAnswer;
+
 
             //declare variable to determine if game is active
             bool bPlaying = true;
-            
+
             while (bPlaying)
             {
+                timeUp = false;
                 //ask what question number
                 bool bValid = false;
                 while (!bValid)
@@ -57,22 +66,80 @@ namespace UT1_Exercise_4
                             break;
                     }
                 }
-                
-                //start timer
+                //Ask question
+                Console.WriteLine("You have 5 seconds to answer the following question:");
+                Console.WriteLine(sQuestion);
+
+                //re-declare bValid for reuse
+                bValid = false;
+
+                // prompt for the answer until they enter a valid response
+                do
+                {
+                    timer = new Timer(5000);
+                    timer.Elapsed += new ElapsedEventHandler(TimesUp);
+                    timer.Start();
+
+                    string sResponse = Console.ReadLine();
+
+
+                    if (!timeUp)
+                    {
+
+                        if (sResponse.Equals(sAnswer))
+                        {
+                            bValid = true;
+                            timer.Stop();
+                            Console.WriteLine("Well done!");
+                        }
+                        else
+                        {
+                            Console.WriteLine("Wrong!  The answer is: " + sAnswer);
+                            bValid = true;
+                            timer.Stop();
+                        }
+
+                    }
+                    else
+                    {
+                        bValid = true;
+                        sResponse = "porcupine";
+                        timer.Stop();
+                    }
+                    timer.Stop();
+                } while (!bValid);
                 //read response
                 //determine if correct
                 //print right answer if wrong
                 //Ask if user would like to play again
-                Console.WriteLine("Play again?");
+                Console.Write("Play again? ");
                 string sPlaying = Console.ReadLine();
                 if (sPlaying.StartsWith("n"))
                 {
                     bPlaying = false;
 
                 }
+                Console.WriteLine();
             }
 
         }
-        
+        static void TimesUp(object sender, ElapsedEventArgs e)
+        {
+            // send a newline to the console to interrupt the user entry
+            Console.WriteLine();
+
+            // let the user know their time is up
+            Console.WriteLine("Time's up!");
+
+
+            Console.WriteLine("The answer is: " + sAnswer);
+
+            // set the time out flag
+            timeUp = true;
+
+            // stop the timer, otherwise it will start over
+            timer.Stop();
+        }
+
     }
 }
