@@ -19,28 +19,45 @@ namespace UT1_Exercise_4
             string sAnswer2 = "42";
             string sAnswer3 = "What do you mean? African or European swallow?";
 
+            //declare chosen question/answer variables
+            string sQuestion;
+            string sAnswer;
+
             //declare variable to determine if game is active
             bool bPlaying = true;
+            
             while (bPlaying)
             {
                 //ask what question number
-                Console.Write("Choose your question (1-3): ");
-                string sResponse = Console.ReadLine();
-                switch (sResponse)
+                bool bValid = false;
+                while (!bValid)
                 {
-                    case "1":
-
-                        break;
-                    case "2":
-
-                        break;
-                    case "3":
-
-                        break; 
-                    default:
-
-                        break;
+                    Console.Write("Choose your question (1-3): ");
+                    string sResponse = Console.ReadLine();
+                    //assign the chosen question + answer to the active question+answer variables.
+                    switch (sResponse)
+                    {
+                        case "1":
+                            sQuestion = sQuestion1;
+                            sAnswer = sAnswer1;
+                            bValid = true;
+                            break;
+                        case "2":
+                            sQuestion = sQuestion2;
+                            sAnswer = sAnswer2;
+                            bValid = true;
+                            break;
+                        case "3":
+                            sQuestion = sQuestion3;
+                            sAnswer = sAnswer3;
+                            bValid = true;
+                            break;
+                        default:
+                            Console.WriteLine("Invalid entry. Try again.");
+                            break;
+                    }
                 }
+                
                 //start timer
                 //read response
                 //determine if correct
@@ -56,5 +73,6 @@ namespace UT1_Exercise_4
             }
 
         }
+        
     }
 }
