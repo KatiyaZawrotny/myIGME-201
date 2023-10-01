@@ -5,7 +5,7 @@ namespace NumberSort
     class Program
     {
         // the definition of the delegate function data type
-        delegate double sortingFunction(double[] a);
+        delegate string sortingFunction(string[] a);
 
         static void Main(string[] args)
         {
@@ -20,19 +20,16 @@ namespace NumberSort
         start:
             Console.WriteLine("Enter a list of space-separated words");
 
-            // read the space-separated string of numbers
+            // read the space-separated string of words
             string sWords = Console.ReadLine();
 
-            // split the string into the an array of strings which are the individual numbers
+            // split the string into the an array of strings which are the individual words
             string[] sWord = sWords.Split(' ');
 
             // initialize the size of the unsorted array to 0
             int nUnsortedLength = 0;
 
-            // a double used for parsing the current array element
-            //double nThisWord;
-
-            // iterate through the array of number strings
+            // iterate through the array of word strings
             foreach (string sThisWord in sWord)
             {
                 // if the length of this string is 0 (ie. they typed 2 spaces in a row)
@@ -44,28 +41,26 @@ namespace NumberSort
 
                 try
                 {
-                    // try to parse the current string into a double
-                    //nThisNumber = double.Parse(sThisNumber);
-
-                    // if it's successful, increment the number of unsorted numbers
+                   
+                    // if it's successful, increment the number of unsorted words
                     ++nUnsortedLength;
                 }
                 catch
                 {
                     // if an exception occurs
-                    // indicate which number is invalid
-                    Console.WriteLine($"Number #{nUnsortedLength + 1} is not a valid number.");
+                    // indicate which word is invalid
+                    Console.WriteLine($"Word #{nUnsortedLength + 1} is not a valid word.");
 
                     // loop back to the start
                     goto start;
                 }
             }
 
-            // now we know how many unsorted numbers there are
+            // now we know how many unsorted words there are
             // allocate the size of the unsorted array
             aUnsorted = new string[nUnsortedLength];
 
-            // reset nUnsortedLength back to 0 to use as the index to store the numbers in the unsorted array
+            // reset nUnsortedLength back to 0 to use as the index to store the words in the unsorted array
             nUnsortedLength = 0;
             foreach (string sThisNumber in sWord)
             {
@@ -75,9 +70,7 @@ namespace NumberSort
                     continue;
                 }
 
-                // parse it into a double (we know they are all valid now)
-                //nThisNumber = double.Parse(sThisNumber);
-
+                
                 // store the value into the array
                 aUnsorted[nUnsortedLength] = sThisNumber;
 
@@ -117,7 +110,7 @@ namespace NumberSort
                 ++nSortedLength;
             }
 
-            // write the sorted array of numbers
+            // write the sorted array of words
             Console.WriteLine("The sorted list is: ");
             foreach (string thisWord in aSorted)
             {
@@ -127,7 +120,7 @@ namespace NumberSort
             Console.WriteLine();
         }
 
-        // find the lowest value in the array of doubles
+        // find the lowest value in the array of words
         static string FindLowestValue(string[] array)
         {
             // define return value
@@ -178,10 +171,10 @@ namespace NumberSort
 
 
         // remove the first instance of a value from an array
-        static void RemoveUnsortedValue(double removeValue, ref double[] array)
+        static void RemoveUnsortedValue(string removeValue, ref string[] array)
         {
             // allocate a new array to hold 1 less value than the source array
-            double[] newArray = new double[array.Length - 1];
+            string[] newArray = new string[array.Length - 1];
 
             // we need a separate counter to index into the new array, 
             // since we are skipping a value in the source array
@@ -191,10 +184,10 @@ namespace NumberSort
             bool bAlreadyRemoved = false;
 
             // iterate through the source array
-            foreach (double srcNumber in array)
+            foreach (string srcWord in array)
             {
                 // if this is the number to be removed and we didn't remove it yet
-                if (srcNumber == removeValue && !bAlreadyRemoved)
+                if (srcWord == removeValue && !bAlreadyRemoved)
                 {
                     // set the flag that it was removed
                     bAlreadyRemoved = true;
@@ -204,13 +197,13 @@ namespace NumberSort
                 }
 
                 // insert the source number into the new array
-                newArray[dest] = srcNumber;
+                newArray[dest] = srcWord;
 
                 // increment the new array index to insert the next number
                 ++dest;
             }
 
-            // set the ref array equal to the new array, which has the target number removed
+            // set the ref array equal to the new array, which has the target word removed
             // this changes the variable in the calling function (aUnsorted in this case)
             array = newArray;
         }
