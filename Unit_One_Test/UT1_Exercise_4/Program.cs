@@ -79,13 +79,13 @@ namespace UT1_Exercise_4
                     timer = new Timer(5000);
                     timer.Elapsed += new ElapsedEventHandler(TimesUp);
                     timer.Start();
-
+                    //read response
                     string sResponse = Console.ReadLine();
 
 
                     if (!timeUp)
                     {
-
+                        //determine if correct
                         if (sResponse.Equals(sAnswer))
                         {
                             bValid = true;
@@ -94,6 +94,7 @@ namespace UT1_Exercise_4
                         }
                         else
                         {
+                            //print right answer if wrong
                             Console.WriteLine("Wrong!  The answer is: " + sAnswer);
                             bValid = true;
                             timer.Stop();
@@ -108,9 +109,9 @@ namespace UT1_Exercise_4
                     }
                     timer.Stop();
                 } while (!bValid);
-                //read response
-                //determine if correct
-                //print right answer if wrong
+                
+                
+                
                 //Ask if user would like to play again
                 Console.Write("Play again? ");
                 string sPlaying = Console.ReadLine();
