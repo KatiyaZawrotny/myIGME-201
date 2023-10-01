@@ -67,7 +67,7 @@ namespace NumberSort
 
             // reset nUnsortedLength back to 0 to use as the index to store the numbers in the unsorted array
             nUnsortedLength = 0;
-            foreach (string sThisNumber in sNumber)
+            foreach (string sThisNumber in sWord)
             {
                 // still skip the blank strings
                 if (sThisNumber.Length == 0)
@@ -76,17 +76,17 @@ namespace NumberSort
                 }
 
                 // parse it into a double (we know they are all valid now)
-                nThisNumber = double.Parse(sThisNumber);
+                //nThisNumber = double.Parse(sThisNumber);
 
                 // store the value into the array
-                aUnsorted[nUnsortedLength] = nThisNumber;
+                aUnsorted[nUnsortedLength] = sThisNumber;
 
                 // increment the array index
                 nUnsortedLength++;
             }
 
             // allocate the size of the sorted array
-            aSorted = new double[nUnsortedLength];
+            aSorted = new string[nUnsortedLength];
 
             // prompt for <a>scending or <d>escending
             Console.Write("Ascending or Descending? ");
@@ -119,32 +119,32 @@ namespace NumberSort
 
             // write the sorted array of numbers
             Console.WriteLine("The sorted list is: ");
-            foreach (double thisNum in aSorted)
+            foreach (string thisWord in aSorted)
             {
-                Console.Write($"{thisNum} ");
+                Console.Write($"{thisWord} ");
             }
 
             Console.WriteLine();
         }
 
         // find the lowest value in the array of doubles
-        static double FindLowestValue(double[] array)
+        static string FindLowestValue(string[] array)
         {
             // define return value
-            double returnVal;
+            string returnVal;
 
             // initialize to the first element in the array
             // (we must initialize to an array element)
             returnVal = array[0];
 
             // loop through the array
-            foreach (double thisNum in array)
+            foreach (string thisWord in array)
             {
                 // if the current value is less than the saved lowest value
-                if (thisNum < returnVal)
+                if (thisWord.CompareTo(returnVal) < 0)
                 {
                     // save this as the lowest value
-                    returnVal = thisNum;
+                    returnVal = thisWord;
                 }
             }
 
@@ -152,23 +152,23 @@ namespace NumberSort
             return (returnVal);
         }
 
-        static double FindHighestValue(double[] array)
+        static string FindHighestValue(string[] array)
         {
             // define return value
-            double returnVal;
+            string returnVal;
 
             // initialize to the first element in the array
             // (we must initialize to an array element)
             returnVal = array[0];
 
             // loop through the array
-            foreach (double thisNum in array)
+            foreach (string thisWord in array)
             {
                 // if the current value is greater than the saved highest value
-                if (thisNum > returnVal)
+                if (thisWord.CompareTo(returnVal) > 0)
                 {
                     // save this as the highest value
-                    returnVal = thisNum;
+                    returnVal = thisWord;
                 }
             }
 
