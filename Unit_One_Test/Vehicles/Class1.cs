@@ -49,10 +49,28 @@ namespace Vehicles
 
     }
 
-    // Class declaration for a compact that uses Car and IHeavyLoadCarrier
-    public class Pickup : Car, IHeavyLoadCarrier
+    // Class declaration for a Pickup that uses Car and IHeavyLoadCarrier and IPassengerCarrier
+    public class Pickup : Car, IHeavyLoadCarrier, IPassengerCarrier
     {
 
     }
 
+    // Class declaration for a Passenger Train that uses Train and IPassengerCarrier
+    public class PassengerTrain : Train , IHeavyLoadCarrier, IPassengerCarrier
+    {
+
+    }
+
+    // Class declaration for a Freight Train that uses Train and IHeavyLoadCarrier
+    public class FreightTrain : Train, IHeavyLoadCarrier
+    {
+
+    }
+
+    // Class declaration for a 424 Double Bogey (???? lol) (I had to add a letter in front so the class
+    // name would be valid. C for Class) that uses Train and IHeavyLoadCarrier
+    public class C424DoubleBogey : Train, IHeavyLoadCarrier
+    {
+
+    }
 }
