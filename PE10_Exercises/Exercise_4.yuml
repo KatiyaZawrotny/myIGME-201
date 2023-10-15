@@ -10,4 +10,4 @@
 
 [CupOfTea|LeafType]
 [A:HotDrink]^[CupOfTea]
-[CupOfTea]supports-.->[ICup]
+[CupOfTea]supports-.->[ICup] 
