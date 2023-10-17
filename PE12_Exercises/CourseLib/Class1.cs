@@ -6,8 +6,7 @@ using System.Threading.Tasks;
 
 namespace CourseLib
 {
-    public class Class1
-    {
+    
         //Courses has fields for a sorted list and a course code. It had a method for removing the course code
         public class Courses
         {
@@ -125,5 +124,5 @@ namespace CourseLib
         }
 
     }
-}
-}
+
+
