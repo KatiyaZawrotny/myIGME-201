@@ -14,12 +14,26 @@ namespace PetApp
         {
             private string name;
             public int age;
+            public Pet()
+            {
 
+            }
+
+
+            public Pet(string name, int age)
+            {
+                this.name = name;
+                this.age = age;
+            }
             public string Name
             {
                 get
                 {
                     return name;
+                }
+                set
+                {
+                    name = value;
                 }
             }
 
@@ -27,11 +41,8 @@ namespace PetApp
             public abstract void Play();
             public abstract void GotoVet();
 
-            public Pet(string name, int age)
-            {
-                this.name = name;
-                this.age = age;
-            }
+
+
         }
 
         //interface for a Cat
@@ -67,27 +78,27 @@ namespace PetApp
 
             public override void Eat()
             {
-                throw new NotImplementedException();
+                Console.WriteLine(Name + " eats their food!");
             }
 
             public override void Play()
             {
-                throw new NotImplementedException();
+                Console.WriteLine(Name + " plays with a ball! Fetch!");
             }
 
             public override void GotoVet()
             {
-                throw new NotImplementedException();
+                Console.WriteLine(Name + " has been taken to the vet!");
             }
 
             public void Bark()
             {
-                throw new NotImplementedException();
+                Console.WriteLine(Name + " barks!");
             }
 
             public void NeedWalk()
             {
-                throw new NotImplementedException();
+                Console.WriteLine(Name + " needs a walk!");
             }
         }
 
@@ -100,31 +111,100 @@ namespace PetApp
 
             public override void Eat()
             {
-                throw new NotImplementedException();
+                Console.WriteLine(Name + " eats their food!");
             }
 
             public override void GotoVet()
             {
-                throw new NotImplementedException();
+                Console.WriteLine(Name + " has been taken to the vet!");
             }
 
             public override void Play()
             {
-                throw new NotImplementedException();
+                Console.WriteLine(Name + " plays with a laser pointer!");
             }
 
             public void Purr()
             {
-                throw new NotImplementedException();
+                Console.WriteLine(Name + " purrs!");
             }
 
             public void Scratch()
             {
-                throw new NotImplementedException();
+                Console.WriteLine(Name + " scratches you! Bad kitty!");
             }
+        }
+
+        //Class for containing and managing several pets
+        public class Pets
+        {
+            List<Pet> petList = new List<Pet>();
+
+            public Pet this[int nPetEl]
+            {
+                get
+                {
+                    Pet returnVal;
+                    try
+                    {
+                        returnVal = (Pet)petList[nPetEl];
+                    }
+                    catch
+                    {
+                        returnVal = null;
+                    }
+
+                    return (returnVal);
+                }
+
+                set
+                {
+                    // if the index is less than the number of list elements
+                    if (nPetEl < petList.Count)
+                    {
+                        // update the existing value at that index
+                        petList[nPetEl] = value;
+                    }
+                    else
+                    {
+                        // add the value to the list
+                        petList.Add(value);
+                    }
+                }
+            }
+
+            public int Count
+            {
+                get
+                {
+                    return petList.Count;
+                }
+            }
+
+            public void Add(Pet pet)
+            {
+                petList.Add(pet);
+            }
+
+            public void Remove(Pet pet)
+            {
+                petList.Remove(pet);
+            }
+
+            public void RemoveAt(int petEl)
+            {
+                petList.RemoveAt(petEl);
+            }
+
+
         }
         static void Main(string[] args)
         {
+            Pet thisPet = null;
+            Dog dog = null;
+            Cat cat = null;
+            IDog iDog = null;
+            ICat iCat = null;
         }
     }
 }
