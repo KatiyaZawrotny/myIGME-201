@@ -205,6 +205,119 @@ namespace PetApp
             Cat cat = null;
             IDog iDog = null;
             ICat iCat = null;
+
+            Pets pets = new Pets();
+
+            Random rand = new Random();
+            for (int i = 0; i < 50; i++)
+            {
+                // 1 in 10 chance of adding an animal
+                if (rand.Next(1, 11) == 1)
+                {
+                    if (rand.Next(0, 2) == 0)
+                    {
+                        // add a dog
+                        Console.WriteLine("You bought a dog!");
+
+                        Console.Write("Dog's Name => ");
+                        string name = Console.ReadLine();
+
+                        Console.Write("Age =>");
+                        int age = int.Parse(Console.ReadLine());
+
+                        Console.Write("License # =>");
+                        string license = Console.ReadLine();
+
+                        pets.Add(new Dog(license, name, age));
+
+                    }
+                    else
+                    {
+                        // else add a cat
+                        Console.WriteLine("You bought a cat!");
+
+                        Console.Write("Cat's Name => ");
+                        string name = Console.ReadLine();
+
+                        Console.Write("Age =>");
+                        int age = int.Parse(Console.ReadLine());
+
+                        pets.Add(new Cat(name, age));
+
+
+                    }
+                }
+                else
+                {
+                    // choose a random pet from pets and choose a random activity for the pet to do
+                    //set thisPet to random pet from 0-pets.count
+
+                    thisPet = pets[rand.Next(0, pets.Count)];
+                    if (thisPet != null)
+                    {
+
+                        if (thisPet.GetType() == typeof(Dog))
+                        {
+                            iDog = (Dog)thisPet;
+
+                            switch (rand.Next(0, 5))
+                            {
+                                case 0:
+                                    iDog.Eat();
+                                    break;
+                                case 1:
+                                    iDog.Play();
+                                    break;
+                                case 2:
+                                    iDog.Bark();
+                                    break;
+                                case 3:
+                                    iDog.NeedWalk();
+                                    break;
+                                case 4:
+                                    iDog.GotoVet();
+                                    break;
+                                default:
+                                    break;
+                            }
+                        }
+                        else if (thisPet.GetType() == typeof(Cat))
+                        {
+                            iCat = (Cat)thisPet;
+
+                            switch (rand.Next(0, 5))
+                            {
+                                case 0:
+                                    iCat.Eat();
+                                    break;
+                                case 1:
+                                    iCat.Play();
+                                    break;
+                                case 2:
+                                    iCat.Scratch();
+                                    break;
+                                case 3:
+                                    iCat.Purr();
+                                    break;
+
+                                default:
+                                    break;
+                            }
+                        }
+                        else
+                        {
+                            throw new Exception();
+                        }
+
+                    }
+                    else
+                    {
+                        continue;
+                    }
+                }
+
+            }
         }
     }
 }
+
