@@ -33,6 +33,9 @@ namespace MyEditor
             this.timesNewRomanToolStripMenuItem.Click += new EventHandler(TimesNewRomanToolStripMenuItem__Click);
 
             this.toolStrip.ItemClicked += new ToolStripItemClickedEventHandler(ToolStrip__ItemClicked);
+
+            this.richTextBox.SelectionChanged += new EventHandler(RichTextBox__SelectionChanged);
+
             this.Text = "MyEditor";
         }
 
@@ -91,11 +94,23 @@ namespace MyEditor
             richTextBox.SelectionFont = newFont;
         }
 
-        private void TimesNewRomanStripMenuItem__Click(object sender, EventArgs e)
+        private void TimesNewRomanToolStripMenuItem__Click(object sender, EventArgs e)
         {
             Font newFont = new Font("Times New Roman", richTextBox.SelectionFont.Size, richTextBox.SelectionFont.Style);
 
             richTextBox.SelectionFont = newFont;
+        }
+
+        private void RichTextBox__SelectionChanged(object sender, EventArgs e)
+        {
+            if (this.richTextBox.SelectionFont != null)
+            {
+                this.boldToolStripButton.Checked = richTextBox.SelectionFont.Bold;
+                this.italicsToolStripButton.Checked = richTextBox.SelectionFont.Italic;
+                this.underlineToolStripButton.Checked = richTextBox.SelectionFont.Underline;
+            }
+
+            this.colorToolStripButton.BackColor = richTextBox.SelectionColor;
         }
 
         private void OpenToolStripMenuItem__Click(object sender, EventArgs e)
