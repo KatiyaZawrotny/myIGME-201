@@ -223,5 +223,10 @@ namespace MyEditor
 
             this.richTextBox.SelectionFont = newFont;
         }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+
+        }
     }
 }
