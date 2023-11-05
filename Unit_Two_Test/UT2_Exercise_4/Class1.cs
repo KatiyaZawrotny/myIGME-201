@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static UT2_Exercise_4.PhoneLibrary;
 
 namespace UT2_Exercise_4
 {
@@ -129,6 +130,45 @@ namespace UT2_Exercise_4
             {
                 throw new NotImplementedException();
             }
+
+            public static bool operator ==(Tardis tardis1, Tardis tardis2)
+            {
+                if (tardis1 is null && tardis2 is null)
+                    return true;
+                if (tardis1 is null || tardis2 is null)
+                    return false;
+
+                if (tardis1.WhichDrWho == 10 && tardis2.WhichDrWho != 10)
+                    return true;
+                else if (tardis1.WhichDrWho != 10 && tardis2.WhichDrWho == 10)
+                    return false;
+
+                return tardis1.WhichDrWho < tardis2.WhichDrWho;
+            }
+
+            public static bool operator !=(Tardis tardis1, Tardis tardis2)
+            {
+                return !(tardis1 == tardis2);
+            }
+
+            public static bool operator <(Tardis tardis1, Tardis tardis2)
+            {
+                return tardis1.WhichDrWho < tardis2.WhichDrWho;
+            }
+
+            public static bool operator >(Tardis tardis1, Tardis tardis2)
+            {
+                return tardis1.WhichDrWho > tardis2.WhichDrWho;
+            }
+
+            public static bool operator <=(Tardis tardis1, Tardis tardis2)
+            {
+                return tardis1.WhichDrWho <= tardis2.WhichDrWho;
+            }
+            public static bool operator >=(Tardis tardis1, Tardis tardis2)
+            {
+                return tardis1.WhichDrWho >= tardis2.WhichDrWho;
+            }
         }
 
         //PhoneBooth is a child of PushButtonPhone 
@@ -148,5 +188,32 @@ namespace UT2_Exercise_4
                 throw new NotImplementedException();
             }
         }
+
+        static void UsePhone(PhoneInterface phone)
+        {
+            phone.MakeCall();
+            phone.HangUp();
+
+            if (phone is Tardis tardis)
+            {
+                Console.WriteLine("Tardis Identified.");
+                tardis.TimeTravel();
+            }
+            else if (phone is PhoneBooth phoneBooth)
+            {
+                Console.WriteLine("Phone Booth Identified.");
+                phoneBooth.OpenDoor();
+            }
+        }
+
+        static void Main(string[] args)
+        {
+            Tardis tardis = new PhoneLibrary.Tardis();
+            PhoneBooth phoneBooth = new PhoneLibrary.PhoneBooth();
+
+            UsePhone(tardis);
+            UsePhone(phoneBooth);
+        }
+
     }
 }
