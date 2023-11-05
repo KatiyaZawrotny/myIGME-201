@@ -114,29 +114,7 @@ namespace UT2_Exercise_8
             }
         }
 
-        //FindInspiration takes a source of inspiration and uses it to determine a color
-        public static string FindInspiration(IInspiration inspo)
-        {
-            string[] colors = new string[7] {"Red", "Orange", "Yellow", "Green", "Blue", "Purple", "Pink" };
-            Random rand = new Random();
-            inspo.Browse();
-            inspo.Sketch();
-            while (true)
-            {
-                if (inspo.Critique())
-                {
-                    Console.WriteLine("This is some good inspiration!");
-                    break;
-                }
-                else
-                {
-                    Console.WriteLine("This inspiration isn't good...time to keep looking.");
-                }
-            }
-
-            return colors[rand.Next(0, colors.Length-1)];
-            
-        }
+        
 
     }
     
