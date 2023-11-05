@@ -189,6 +189,7 @@ namespace UT2_Exercise_4
             }
         }
 
+        //UsePhone takes a PhoneInterfact to attempt to make a call and hang it up, along with certain phone-type-specific outcomes
         static void UsePhone(PhoneInterface phone)
         {
             phone.MakeCall();
@@ -206,6 +207,7 @@ namespace UT2_Exercise_4
             }
         }
 
+        //Main creates a tardis and a phone booth and uses the phones
         static void Main(string[] args)
         {
             Tardis tardis = new PhoneLibrary.Tardis();
