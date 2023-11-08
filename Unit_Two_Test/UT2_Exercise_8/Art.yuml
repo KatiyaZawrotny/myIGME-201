@@ -1,0 +1,24 @@
+// {type:class}
+// {generate:true}
+// {direction:topDown}
+
+[+I:IDraw||+Draw():void]
+[+I:IInspiration||+Browse():void;+Sketch():void;+Critique():bool]
+[+A:ArtMedium||+Color:string;+Replace():void;+Use():void|(color string)]
+
+[+ColoredPencil||+Color:string;+Replace():void;+Sharpen():void;+Draw():void|(color string):base(color)]
+[+ApplePen||+Color:string;+Replace():void;+Charge():void;+Draw():void|(color string):base(color)]
+
+
+[+Pinterest||+Browse():void;+Sketch():void;+Critique():bool|()]
+
+
+[+I:IDraw]^[+ColoredPencil]
+[+A:ArtMedium]<-[+ColoredPencil]
+
+[+I:IDraw]^[+ApplePen]
+[+A:ArtMedium]<-[+ApplePen]
+
+[+I:IInspiration]^[+Pinterest]
+[+ColoredPencil]-.-[+Pinterest]
+[+ApplePen]-.-[+Pinterest]

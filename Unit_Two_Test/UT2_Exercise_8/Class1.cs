@@ -10,6 +10,10 @@ namespace UT2_Exercise_8
     {
         public abstract class ArtMedium
         {
+            public ArtMedium(string color)
+            {
+                this.Color = color;
+            }
             public string Color
             {
                 get; 
@@ -22,6 +26,7 @@ namespace UT2_Exercise_8
             {
                 Console.WriteLine("Using the medium!");
             }
+            
         }
 
         public interface IDraw
@@ -39,9 +44,8 @@ namespace UT2_Exercise_8
         //ColoredPencil is a Medium that has a color and the ability to be replaced or sharpened
         public class ColoredPencil : ArtMedium, IDraw
         {
-            public ColoredPencil(string color)
+            public ColoredPencil(string color) : base(color)
             {
-                this.Color = color;
             }
 
             public override void Replace()
@@ -63,10 +67,10 @@ namespace UT2_Exercise_8
         //ApplePen is a Medium who takes a color, can be replaced, or can be charged
         public class ApplePen : ArtMedium, IDraw
         {
-            public ApplePen(string color)
+            public ApplePen(string color) : base(color)
             {
-                this.Color = color;
             }
+
             public override void Replace()
             {
                 Console.WriteLine("Time to blow $125 on another apple pen....");
@@ -84,6 +88,10 @@ namespace UT2_Exercise_8
 
         public class Pinterest : IInspiration
         {
+            public Pinterest()
+            {
+
+            }
             public void Browse()
             {
                 Console.WriteLine("Browsing Pinterest!");
