@@ -234,36 +234,37 @@ namespace CourseList
             string courseCode = null;
 
             // 39. get the courseCode from the currently selected row
-            
+            courseCode = (string)lv.SelectedItems[0].Tag;
 
             // 40. get the course object associated with this courseCode from Globals.courses SortedList
-            
+            course = Globals.courses[courseCode];
 
             if (course != null)
             {
                 // 41. set courseCodeTextBox to hold the courseCode
-            
+                courseCodeTextBox.Text = course.courseCode;
 
                 // 42. set courseDescriptionTextBox to hold the description
-                
+                courseDescriptionTextBox.Text = course.description;
 
                 // 43. set the reviewRichTextBox to hold the review
-                
+                reviewRichTextBox.Text = course.review;
+
 
                 // 44. disable the ListView lv using the Enabled property
-                
+                lv.Enabled = false;
 
                 // 45. enable courseCodeTextBox
-                
+                courseCodeTextBox.Enabled = true;
 
                 // 46. enable courseDescriptionTextBox
-                
+                courseDescriptionTextBox.Enabled = true;
 
                 // 47. enable reviewRichTextBox
-                
+                reviewRichTextBox.Enabled = true;
 
                 // 48. enable the updateButton
-                
+                updateButton.Enabled = true;
             }
         }
 
