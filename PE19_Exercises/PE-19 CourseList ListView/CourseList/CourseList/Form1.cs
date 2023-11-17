@@ -69,7 +69,7 @@ namespace CourseList
 
             // 3. Add courseListView KeyDown Event Handler with CourseListView__KeyDown
             // (this is the Event Handler for pressing Enter on a row of the ListView)
-            this.courseListView.KeyDown += new EventHandler(CourseListView__KeyDown);
+            this.courseListView.KeyDown += new KeyEventHandler(CourseListView__KeyDown);
 
             // 4. Add courseListView SelectedIndexChanged Event Handler with CourseListView__SelectedIndexChanged
             // (this is the Event Handler for using the arrow keys or single-clicking on another row of the ListView)
@@ -337,10 +337,10 @@ namespace CourseList
             try
             {
                 // 61. get the courseCode from the currently selected row
-                
+                courseCode = (string)lv.SelectedItems[0].Tag;
 
                 // 62. get the course object associated with this courseCode from courses
-                
+                course = Globals.courses[courseCode];
             }
             catch
             {
@@ -350,13 +350,13 @@ namespace CourseList
             if (course != null)
             {
                 // 63. set courseCodeTextBox to hold the courseCode
-                
+                courseCodeTextBox.Text = course.courseCode;
 
                 // 64. set courseDescriptionTextBox to hold the description
-                
+                courseDescriptionTextBox.Text = course.description;
 
                 // 65. set the reviewRichTextBox to hold the review
-                
+                reviewRichTextBox.Text = course.review;
             }
         }
         private void UpdateButton__Click(object sender, EventArgs e)
@@ -390,13 +390,13 @@ namespace CourseList
             }
 
             // 66. copy courseCodeTextBox into our cloned object copyCourse
-            
+            copyCourse.courseCode = courseCodeTextBox.Text;
 
             // 67. copy courseDescriptionTextBox into our cloned object copyCourse
-            
+            copyCourse.description = courseDescriptionTextBox.Text;
 
             // 68. copy reviewRichTextBox into our cloned object copyCourse
-            
+            copyCourse.review = reviewRichTextBox.Text;
 
             // remove the updated courseCode from courses
             Globals.courses.Remove(copyCourse.courseCode);
@@ -405,25 +405,25 @@ namespace CourseList
             Globals.courses[copyCourse.courseCode] = copyCourse;
 
             // 69. enable the courseListView
-            
+            courseListView.Enabled = true;
 
             // set the focus to the courseListView
             this.courseListView.Focus();
 
             // 70. disable courseCodeTextBox
-            
+            courseCodeTextBox.Enabled = false;
 
             // 71. disable courseDescriptionTextBox
-            
+            courseDescriptionTextBox.Enabled = false;
 
             // 72. disable reviewRichTextBox
-            
+            reviewRichTextBox.Enabled = false;
 
             // 73. disable updateButton
-            
+            updateButton.Enabled = false;
 
             // 74. call PaintListView with the courseCode that should be shown at the top of the list
-            
+            PaintListView(copyCourse.courseCode);
         }
 
         private void ExitButton__Click(object sender, EventArgs e)
