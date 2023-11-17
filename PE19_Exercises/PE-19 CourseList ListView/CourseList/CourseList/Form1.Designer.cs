@@ -73,6 +73,7 @@
             this.courseCodeTextBox.Name = "courseCodeTextBox";
             this.courseCodeTextBox.Size = new System.Drawing.Size(124, 22);
             this.courseCodeTextBox.TabIndex = 11;
+            this.courseCodeTextBox.TextChanged += new System.EventHandler(this.courseCodeTextBox_TextChanged);
             // 
             // courseDescriptionTextBox
             // 

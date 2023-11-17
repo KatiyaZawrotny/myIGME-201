@@ -110,37 +110,40 @@ namespace CourseList
             int nStartEl = 0;
 
             // 10. if a firstCourseCode to display at top of the list was passed in
-            //if(    )
+            if (firstCourseCode != null) ;
             {
                 // 11. fetch the index of firstCourseCode from the Globals.courses.sortedList
                 // using the IndexOfKey method
+                nStartEl = Globals.courses.sortedList.IndexOfKey(firstCourseCode);
                 
             }
 
             // 12. clear the listview items
-            
+            this.courseListView.Items.Clear();
 
             // 13. lock the listview to begin updating it
+            this.courseListView.BeginUpdate();
             
 
             int lviCntr = 0;
 
             // 14. loop through all courses in Globals.courses.sortedList and insert them in the ListView
-            // foreach ( )
+            foreach (KeyValuePair<string, Course> keyValuePair in Globals.courses.sortedList)
             {
                 Course thisCourse = null;
 
                 // 15. set thisCourse to the Value in the current keyValuePair
-                
+                thisCourse = keyValuePair.Value;
 
                 // 16. create a new ListViewItem named lvi
-                
+                lvi = new ListViewItem();
+
 
                 // 17. set the first column of this row to show thisCourse.courseCode
-                
+                lvi.Text = thisCourse.courseCode;
 
                 // 18. set the Tag property for this ListViewItem to the courseCode
-                
+                lvi.Tag = thisCourse.courseCode;
 
                 // alternate row color
                 if (lviCntr % 2 == 0)
@@ -154,70 +157,70 @@ namespace CourseList
 
 
                 // 19. create a new ListViewItem.ListViewSubItem named lvsi for the next column
-                
+                lvsi = new ListViewItem.ListViewSubItem();
 
                 // 20. set the column to show thisCourse.description
-                
+                lvsi.Text = thisCourse.description;
 
                 // 21. add lvsi to lvi.SubItems
-                
+                lvi.SubItems.Add(lvsi);
 
                 // 22. create a new ListViewItem.ListViewSubItem named lvsi for the next column
-                
+                lvsi = new ListViewItem.ListViewSubItem();
 
                 // 23. set the column to show thisCourse.teacherEmail
-                
+                lvsi.Text = thisCourse.teacherEmail;
 
                 // 24. add lvsi to lvi.SubItems
-                
-
+                lvi.SubItems.Add(lvsi);
 
                 // 25. create a new ListViewItem.ListViewSubItem named lvsi for the next column
-                
+                lvsi = new ListViewItem.ListViewSubItem();
 
                 // 26. set the column to show thisCourse.schedule.DaysOfWeek()
                 // note that thisCourse.schedule.DaysOfWeek() returns the string that we want to display
-                
+                lvsi.Text = thisCourse.schedule.DaysOfWeek();
 
                 // 27. add lvsi to lvi.SubItems
-                
+                lvi.SubItems.Add(lvsi);
 
                 // 28. create a new ListViewItem.ListViewSubItem named lvsi for the next column
-                
+                lvsi = new ListViewItem.ListViewSubItem();
 
                 // 29. set the column to show thisCourse.schedule.GetTimes()
                 // note that thisCourse.schedule.GetTimes() returns the string that we want to display
-                
+                lvsi.Text = thisCourse.schedule.GetTimes();
 
                 // 30. add lvsi to lvi.SubItems
-                
+                lvi.SubItems.Add(lvsi);
 
 
                 // 31. if this row is the row that we are supposed to show at the top of the list
-                //if (  )
+                if (lviCntr == nStartEl)
                 {
                     // 32. set this ListViewItem to selected
-                    
+                    lvi.Selected = true;
 
                     // 33. set this ListViewItem to be focused upon (otherwise the current focus defaults to the first in the list)
-                    
+                    lvi.Focused = true;
 
                     // 34. save a reference to this ListViewItem in firstLVI
-                    
+                    firstLVI = lvi;
                 }
 
                 // 35. lvi is all filled in for all columns for this row so add it to courseListView.Items
-                
+                this.courseListView.Items.Add(lvi);
 
                 // 36. increment our counter to alternate colors
-                
+                ++lviCntr;
             }
 
 
             // 37. unlock the ListView since we are done updating the contents
-            
+            this.courseListView.EndUpdate();
 
             // 38. set courseListView.TopItem to be firstLVI
+            courseListView.TopItem = firstLVI;
             
         }
 
@@ -425,6 +428,11 @@ namespace CourseList
         private void ExitButton__Click(object sender, EventArgs e)
         {
             Application.Exit();
+        }
+
+        private void courseCodeTextBox_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
