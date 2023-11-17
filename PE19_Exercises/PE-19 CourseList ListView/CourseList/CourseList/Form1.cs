@@ -278,44 +278,44 @@ namespace CourseList
             string courseCode = null;
 
             // 49. if Enter was pressed, we will handle it
-            //if ( )
+            if (e.KeyCode == Keys.Enter)
             {
                 // 50. remove the key from the keyboard buffer, we handled it
-                
+                e.SuppressKeyPress = true;
 
                 try
                 {
                     // 51. get the courseCode from the currently selected row
-                    
+                    courseCode = (string)lv.SelectedItems[0].Tag;
 
                     // 52. get the course object associated with this courseCode from Globals.courses
-                    
+                    course = Globals.courses[courseCode];
 
                     if (course != null)
                     {
                         // 53. set courseCodeTextBox to hold the courseCode
-                        
+                        courseCodeTextBox.Text = course.courseCode;
 
                         // 54. set courseDescriptionTextBox to hold the description
-                        
+                        courseDescriptionTextBox.Text = course.description;
 
                         // 55. set the reviewRichTextBox to hold the review
-                        
+                        reviewRichTextBox.Text = course.review;
 
                         // 56. disable the ListView
-                        
+                        this.courseListView.Enabled = false;
 
                         // 57. enable courseCodeTextBox
-                        
+                        courseCodeTextBox.Enabled = true;
 
                         // 58. enable courseDescriptionTextBox
-                        
+                        courseDescriptionTextBox.Enabled = true;
 
                         // 59. enable reviewRichTextBox
-                        
+                        reviewRichTextBox.Enabled = true;
 
                         // 60. enable the updateButton
-                        
+                        updateButton.Enabled = true;
                     }
                 }
                 catch
