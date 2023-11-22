@@ -21,7 +21,7 @@ namespace MDI_GifFinder
 
             this.okButton.Click += new EventHandler(okButton__Click);
             this.cancelButton.Click += new EventHandler(cancelButton__Click);
-            this.maxItemsTextBox.KeyPress += new KeyPressEventHandler(maxItemsTextBox__KeyPress);
+            this.maxItemsTextBox.KeyPress += new KeyPressEventHandler(MaxItemsTextBox__KeyPress);
         }
 
         private void MaxItemsTextBox__KeyPress(object sender, KeyPressEventArgs e)
