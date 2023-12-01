@@ -59,6 +59,16 @@ namespace MDI_GifFinder
                     case ".BMP":
                         pictureBox1.Image.Save(saveFileDialog1.FileName, System.Drawing.Imaging.ImageFormat.Bmp); 
                         break;
+                    case ".JPG":
+                    case ".JPEG":
+                        pictureBox1.Image.Save(saveFileDialog1.FileName, System.Drawing.Imaging.ImageFormat.Jpeg);
+                        break;
+                    case ".PNG":
+                        pictureBox1.Image.Save(saveFileDialog1.FileName, System.Drawing.Imaging.ImageFormat.Png);
+                        break;
+                    case ".GIF":
+                        pictureBox1.Image.Save(saveFileDialog1.FileName, System.Drawing.Imaging.ImageFormat.Gif);
+                        break;
                 }
             }
         }

@@ -90,9 +90,16 @@ namespace MDI_GifFinder
                 htmlElementCollection = webBrowser1.Document.GetElementsByTagName("img");
                 foreach(HtmlElement htmlElement1 in htmlElementCollection)
                 {
-
+                    ImageForm imageForm = new ImageForm(this, htmlElement1.GetAttribute("src"), htmlElement1.GetAttribute("title"));
+                    imageForm.Show();
                 }
+                htmlElement.OuterHtml = "";
             }
+            else
+            {
+                timer1.Start();
+            }
+            
         }
     }
 }
