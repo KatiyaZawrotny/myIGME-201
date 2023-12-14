@@ -28,11 +28,20 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.SuspendLayout();
+            // 
+            // progressBar1
+            // 
+            this.progressBar1.Location = new System.Drawing.Point(840, 539);
+            this.progressBar1.Name = "progressBar1";
+            this.progressBar1.Size = new System.Drawing.Size(100, 23);
+            this.progressBar1.TabIndex = 0;
             // 
             // Form1
             // 
-            this.ClientSize = new System.Drawing.Size(975, 253);
+            this.ClientSize = new System.Drawing.Size(1135, 607);
+            this.Controls.Add(this.progressBar1);
             this.Name = "Form1";
             this.ResumeLayout(false);
 
@@ -70,6 +79,7 @@
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.ProgressBar progressBar1;
     }
 }
 

@@ -66,6 +66,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -79,6 +80,54 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\BarackObama.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\BenjaminHarrison.jpeg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\DwightDEisenhower.jpeg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\FranklinDRoosevelt.jpeg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\FranklinPierce.jpeg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\GeorgeWashington.jpeg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\GeorgeWBush.jpeg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\JamesBuchanan.jpeg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\JohnAdams.jpeg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\JohnFKennedy.jpeg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MartinVanBuren.jpeg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\RonaldReagan.jpeg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\TheodoreRoosevelt.jpeg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ThomasJefferson.jpeg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\WilliamJClinton.jpeg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\WilliamMcKinley.jpeg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

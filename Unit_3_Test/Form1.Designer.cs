@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.progressBar = new System.Windows.Forms.ProgressBar();
             this.webBrowserGroupBox = new System.Windows.Forms.GroupBox();
             this.filterGroupBox = new System.Windows.Forms.GroupBox();
@@ -71,6 +72,7 @@
             this.eisenhowerTextBox = new System.Windows.Forms.TextBox();
             this.reaganTextBox = new System.Windows.Forms.TextBox();
             this.mckinleyTextBox = new System.Windows.Forms.TextBox();
+            this.timer = new System.Windows.Forms.Timer(this.components);
             this.webBrowserGroupBox.SuspendLayout();
             this.filterGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).BeginInit();
@@ -80,8 +82,9 @@
             // 
             this.progressBar.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.progressBar.Location = new System.Drawing.Point(0, 561);
+            this.progressBar.Maximum = 180;
             this.progressBar.Name = "progressBar";
-            this.progressBar.Size = new System.Drawing.Size(974, 23);
+            this.progressBar.Size = new System.Drawing.Size(1314, 23);
             this.progressBar.TabIndex = 0;
             // 
             // webBrowserGroupBox
@@ -89,7 +92,7 @@
             this.webBrowserGroupBox.Controls.Add(this.webBrowser);
             this.webBrowserGroupBox.Location = new System.Drawing.Point(438, 12);
             this.webBrowserGroupBox.Name = "webBrowserGroupBox";
-            this.webBrowserGroupBox.Size = new System.Drawing.Size(524, 506);
+            this.webBrowserGroupBox.Size = new System.Drawing.Size(864, 506);
             this.webBrowserGroupBox.TabIndex = 1;
             this.webBrowserGroupBox.TabStop = false;
             this.webBrowserGroupBox.Text = "Web Group Box";
@@ -112,9 +115,10 @@
             // 
             this.webBrowser.Dock = System.Windows.Forms.DockStyle.Fill;
             this.webBrowser.Location = new System.Drawing.Point(3, 18);
+            this.webBrowser.Margin = new System.Windows.Forms.Padding(10);
             this.webBrowser.MinimumSize = new System.Drawing.Size(20, 20);
             this.webBrowser.Name = "webBrowser";
-            this.webBrowser.Size = new System.Drawing.Size(518, 485);
+            this.webBrowser.Size = new System.Drawing.Size(858, 485);
             this.webBrowser.TabIndex = 0;
             this.webBrowser.Url = new System.Uri("https://en.wikipedia.org/wiki/Benjamin_Harrison", System.UriKind.Absolute);
             // 
@@ -175,9 +179,11 @@
             // 
             // pictureBox
             // 
+            this.pictureBox.Image = global::Unit_3_Test.Properties.Resources.BenjaminHarrison;
             this.pictureBox.Location = new System.Drawing.Point(22, 251);
             this.pictureBox.Name = "pictureBox";
-            this.pictureBox.Size = new System.Drawing.Size(173, 224);
+            this.pictureBox.Size = new System.Drawing.Size(153, 224);
+            this.pictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox.TabIndex = 3;
             this.pictureBox.TabStop = false;
             // 
@@ -360,7 +366,7 @@
             // exitButton
             // 
             this.exitButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.exitButton.Location = new System.Drawing.Point(862, 525);
+            this.exitButton.Location = new System.Drawing.Point(1209, 524);
             this.exitButton.Name = "exitButton";
             this.exitButton.Size = new System.Drawing.Size(75, 23);
             this.exitButton.TabIndex = 21;
@@ -501,7 +507,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.exitButton;
-            this.ClientSize = new System.Drawing.Size(974, 584);
+            this.ClientSize = new System.Drawing.Size(1314, 584);
             this.Controls.Add(this.jeffersonTextBox);
             this.Controls.Add(this.theodoreRooseveltTextBox);
             this.Controls.Add(this.adamsTextBox);
@@ -595,6 +601,7 @@
         private System.Windows.Forms.TextBox eisenhowerTextBox;
         private System.Windows.Forms.TextBox reaganTextBox;
         private System.Windows.Forms.TextBox mckinleyTextBox;
+        private System.Windows.Forms.Timer timer;
     }
 }
 
