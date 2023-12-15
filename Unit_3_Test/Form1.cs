@@ -53,14 +53,16 @@ jefferson
 		const int theodoreRoosevelt = 26;
 		const int jefferson = 3;
 
+		//Presidents is a form that provides a quiz for 16 presidents' numbers 
 		public Form1()
 		{
 			InitializeComponent();
 
 			//start form with harrison's information going
 			harrisonRadioButton.Checked = true;
-			pictureBox.Image = Unit_3_Test.Properties.Resources.BenjaminHarrison;
-			filterAllRadioButton.Checked = true;
+            filterAllRadioButton.Checked = true;
+            pictureBox.Image = Unit_3_Test.Properties.Resources.BenjaminHarrison;
+			
 
 			//set up tooltips for each president's text box
 			foreach (Control control in Controls)
@@ -130,7 +132,7 @@ jefferson
 			exitButton.Click += new EventHandler(ExitButton__Click);
 		}
 
-		
+		//Exits program
         private void ExitButton__Click(object sender, EventArgs e)
         {
 			this.Close();
@@ -139,7 +141,9 @@ jefferson
         //Method to update the progress bar as timer ticks, and ends timer if test is successfully passed
         private void Timer__Tick(object sender, EventArgs e)
 		{
+			//tick down progress bar every second
 			progressBar.Value--;
+			//If progress bar runs out, reset the game
 			if (progressBar.Value == progressBar.Minimum)
 			{
 				timer.Stop();
@@ -155,6 +159,7 @@ jefferson
                 }
 
             }
+			//If the game is successfully completed, stop the timer, enable exit, and play the fireworks
 			else if (CheckComplete() == true)
 			{
 				timer.Stop();
@@ -176,9 +181,9 @@ jefferson
 			pictureBox.Size = new Size(153, 224);
 		}
 
-		//Radio Check Changed buttons for each Filter button that updates which presidents are shown
-		
-		private void FilterAllRadioButton__CheckChanged(object sender, EventArgs e)
+        //Radio Check Changed buttons for each Filter button that updates which presidents are shown
+        #region Filter buttons
+        private void FilterAllRadioButton__CheckChanged(object sender, EventArgs e)
 		{
 			harrisonRadioButton.Visible = true;
             franklinRooseveltRadioButton.Visible = true;
@@ -288,7 +293,7 @@ jefferson
 			washingtonRadioButton.Checked = true;
 
         }
-
+        #endregion
         //Radio Check Changed buttons for each president that updates the text of the web groupbox, the photo in picturebox,
         // and the website displayed in the web browser.
         #region President Button Checkchanged events
@@ -358,105 +363,108 @@ jefferson
 				UpdatePresident("Thomas_Jefferson");
 			}
         #endregion
-        //adds a popup if the answer is wrong
-        
-        private void HarrisonTextBox__KeyPress(object sender, KeyPressEventArgs e)
-		{
-			KeyPressChecks(e);
-            ValidatePresident(harrisonTextBox, harrison);
+
+        //Keypress methods for all presidents that starts the timer if it hasn't aleady been done,
+		//Validates that entries are numbers and adds a popup if the answer is wrong
+        #region President KeyPress methods
+			private void HarrisonTextBox__KeyPress(object sender, KeyPressEventArgs e)
+			{
+				KeyPressChecks(e);
+				ValidatePresident(harrisonTextBox, harrison);
 			
-        }
+			}
 
-		private void FranklinRooseveltTextBox__KeyPress(object sender, KeyPressEventArgs e)
-		{
-			KeyPressChecks(e);
-            ValidatePresident(franklinRooseveltTextBox, franklinRoosevelt);
+			private void FranklinRooseveltTextBox__KeyPress(object sender, KeyPressEventArgs e)
+			{
+				KeyPressChecks(e);
+				ValidatePresident(franklinRooseveltTextBox, franklinRoosevelt);
 			
-        }
-		private void ClintonTextBox__KeyPress(object sender, KeyPressEventArgs e)
-		{
-			KeyPressChecks(e);
-            ValidatePresident(clintonTextBox, clinton);
+			}
+			private void ClintonTextBox__KeyPress(object sender, KeyPressEventArgs e)
+			{
+				KeyPressChecks(e);
+				ValidatePresident(clintonTextBox, clinton);
 			
-        }
-        private void BuchananTextBox__KeyPress(object sender, KeyPressEventArgs e)
-        {
-            KeyPressChecks(e);
-            ValidatePresident(buchananTextBox, buchanan);
+			}
+			private void BuchananTextBox__KeyPress(object sender, KeyPressEventArgs e)
+			{
+				KeyPressChecks(e);
+				ValidatePresident(buchananTextBox, buchanan);
 
-        }
-        private void PierceTextBox__KeyPress(object sender, KeyPressEventArgs e)
-        {
-            KeyPressChecks(e);
-            ValidatePresident(pierceTextBox, pierce);
+			}
+			private void PierceTextBox__KeyPress(object sender, KeyPressEventArgs e)
+			{
+				KeyPressChecks(e);
+				ValidatePresident(pierceTextBox, pierce);
 
-        }
-        private void BushTextBox__KeyPress(object sender, KeyPressEventArgs e)
-        {
-            KeyPressChecks(e);
-            ValidatePresident(bushTextBox, bush);
+			}
+			private void BushTextBox__KeyPress(object sender, KeyPressEventArgs e)
+			{
+				KeyPressChecks(e);
+				ValidatePresident(bushTextBox, bush);
 
-        }
-        private void ObamaTextBox__KeyPress(object sender, KeyPressEventArgs e)
-        {
-            KeyPressChecks(e);
-            ValidatePresident(obamaTextBox, obama);
+			}
+			private void ObamaTextBox__KeyPress(object sender, KeyPressEventArgs e)
+			{
+				KeyPressChecks(e);
+				ValidatePresident(obamaTextBox, obama);
 
-        }
-        private void KennedyTextBox__KeyPress(object sender, KeyPressEventArgs e)
-        {
-            KeyPressChecks(e);
-            ValidatePresident(kennedyTextBox, kennedy);
+			}
+			private void KennedyTextBox__KeyPress(object sender, KeyPressEventArgs e)
+			{
+				KeyPressChecks(e);
+				ValidatePresident(kennedyTextBox, kennedy);
 
-        }
-        private void MckinleyTextBox__KeyPress(object sender, KeyPressEventArgs e)
-        {
-            KeyPressChecks(e);
-            ValidatePresident(mckinleyTextBox, mckinley);
+			}
+			private void MckinleyTextBox__KeyPress(object sender, KeyPressEventArgs e)
+			{
+				KeyPressChecks(e);
+				ValidatePresident(mckinleyTextBox, mckinley);
 
-        }
-        private void ReaganTextBox__KeyPress(object sender, KeyPressEventArgs e)
-        {
-            KeyPressChecks(e);
-            ValidatePresident(reaganTextBox, reagan);
+			}
+			private void ReaganTextBox__KeyPress(object sender, KeyPressEventArgs e)
+			{
+				KeyPressChecks(e);
+				ValidatePresident(reaganTextBox, reagan);
 
-        }
-        private void EisenhowerTextBox__KeyPress(object sender, KeyPressEventArgs e)
-        {
-            KeyPressChecks(e);
-            ValidatePresident(eisenhowerTextBox, eisenhower);
+			}
+			private void EisenhowerTextBox__KeyPress(object sender, KeyPressEventArgs e)
+			{
+				KeyPressChecks(e);
+				ValidatePresident(eisenhowerTextBox, eisenhower);
 
-        }
-        private void VanburenTextBox__KeyPress(object sender, KeyPressEventArgs e)
-        {
-            KeyPressChecks(e);
-            ValidatePresident(vanburenTextBox, vanburen);
+			}
+			private void VanburenTextBox__KeyPress(object sender, KeyPressEventArgs e)
+			{
+				KeyPressChecks(e);
+				ValidatePresident(vanburenTextBox, vanburen);
 
-        }
-        private void WashingtonTextBox__KeyPress(object sender, KeyPressEventArgs e)
-        {
-            KeyPressChecks(e);
-            ValidatePresident(washingtonTextBox, washington);
+			}
+			private void WashingtonTextBox__KeyPress(object sender, KeyPressEventArgs e)
+			{
+				KeyPressChecks(e);
+				ValidatePresident(washingtonTextBox, washington);
 
-        }
-        private void AdamsTextBox__KeyPress(object sender, KeyPressEventArgs e)
-        {
-            KeyPressChecks(e);
-            ValidatePresident(adamsTextBox, adams);
+			}
+			private void AdamsTextBox__KeyPress(object sender, KeyPressEventArgs e)
+			{
+				KeyPressChecks(e);
+				ValidatePresident(adamsTextBox, adams);
 
-        }
-        private void TheodoreRooseveltTextBox__KeyPress(object sender, KeyPressEventArgs e)
-        {
-            KeyPressChecks(e);
-            ValidatePresident(theodoreRooseveltTextBox, theodoreRoosevelt);
+			}
+			private void TheodoreRooseveltTextBox__KeyPress(object sender, KeyPressEventArgs e)
+			{
+				KeyPressChecks(e);
+				ValidatePresident(theodoreRooseveltTextBox, theodoreRoosevelt);
 
-        }
-        private void JeffersonTextBox__KeyPress(object sender, KeyPressEventArgs e)
-        {
-            KeyPressChecks(e);
-            ValidatePresident(jeffersonTextBox, jefferson);
+			}
+			private void JeffersonTextBox__KeyPress(object sender, KeyPressEventArgs e)
+			{
+				KeyPressChecks(e);
+				ValidatePresident(jeffersonTextBox, jefferson);
 
-        }
+			}
+		#endregion
 
         #region Helper Methods 
         //Starts timer if it has not already started, and checks that input is a number
@@ -613,8 +621,8 @@ jefferson
 				return false;
 			}
 		}
-
-		//auto generated methods I dont know how to get rid of
+        #endregion
+        //auto generated methods I dont know how to get rid of
         private void textBox2_TextChanged(object sender, EventArgs e)
         {
 

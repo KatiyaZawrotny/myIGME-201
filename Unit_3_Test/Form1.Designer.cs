@@ -84,7 +84,7 @@
             // progressBar
             // 
             this.progressBar.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.progressBar.Location = new System.Drawing.Point(0, 561);
+            this.progressBar.Location = new System.Drawing.Point(0, 724);
             this.progressBar.Maximum = 180;
             this.progressBar.Name = "progressBar";
             this.progressBar.Size = new System.Drawing.Size(1314, 23);
@@ -95,7 +95,7 @@
             this.webBrowserGroupBox.Controls.Add(this.webBrowser);
             this.webBrowserGroupBox.Location = new System.Drawing.Point(438, 12);
             this.webBrowserGroupBox.Name = "webBrowserGroupBox";
-            this.webBrowserGroupBox.Size = new System.Drawing.Size(864, 506);
+            this.webBrowserGroupBox.Size = new System.Drawing.Size(864, 628);
             this.webBrowserGroupBox.TabIndex = 1;
             this.webBrowserGroupBox.TabStop = false;
             this.webBrowserGroupBox.Text = "Web Group Box";
@@ -121,7 +121,7 @@
             this.webBrowser.Margin = new System.Windows.Forms.Padding(10);
             this.webBrowser.MinimumSize = new System.Drawing.Size(20, 20);
             this.webBrowser.Name = "webBrowser";
-            this.webBrowser.Size = new System.Drawing.Size(858, 485);
+            this.webBrowser.Size = new System.Drawing.Size(858, 607);
             this.webBrowser.TabIndex = 0;
             this.webBrowser.Url = new System.Uri("https://en.wikipedia.org/wiki/Benjamin_Harrison", System.UriKind.Absolute);
             // 
@@ -369,7 +369,7 @@
             // exitButton
             // 
             this.exitButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.exitButton.Location = new System.Drawing.Point(1209, 524);
+            this.exitButton.Location = new System.Drawing.Point(1224, 662);
             this.exitButton.Name = "exitButton";
             this.exitButton.Size = new System.Drawing.Size(75, 23);
             this.exitButton.TabIndex = 21;
@@ -537,7 +537,8 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.exitButton;
-            this.ClientSize = new System.Drawing.Size(1314, 584);
+            this.ClientSize = new System.Drawing.Size(1314, 747);
+            this.ControlBox = false;
             this.Controls.Add(this.jeffersonTextBox);
             this.Controls.Add(this.theodoreRooseveltTextBox);
             this.Controls.Add(this.adamsTextBox);
