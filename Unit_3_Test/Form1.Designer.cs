@@ -377,6 +377,7 @@
             // harrisonTextBox
             // 
             this.harrisonTextBox.Location = new System.Drawing.Point(178, 30);
+            this.harrisonTextBox.MaxLength = 2;
             this.harrisonTextBox.Name = "harrisonTextBox";
             this.harrisonTextBox.Size = new System.Drawing.Size(39, 22);
             this.harrisonTextBox.TabIndex = 22;
@@ -385,6 +386,7 @@
             // franklinRooseveltTextBox
             // 
             this.franklinRooseveltTextBox.Location = new System.Drawing.Point(178, 56);
+            this.franklinRooseveltTextBox.MaxLength = 2;
             this.franklinRooseveltTextBox.Name = "franklinRooseveltTextBox";
             this.franklinRooseveltTextBox.Size = new System.Drawing.Size(39, 22);
             this.franklinRooseveltTextBox.TabIndex = 23;
@@ -394,6 +396,7 @@
             // clintonTextBox
             // 
             this.clintonTextBox.Location = new System.Drawing.Point(178, 83);
+            this.clintonTextBox.MaxLength = 2;
             this.clintonTextBox.Name = "clintonTextBox";
             this.clintonTextBox.Size = new System.Drawing.Size(39, 22);
             this.clintonTextBox.TabIndex = 24;
@@ -402,6 +405,7 @@
             // buchananTextBox
             // 
             this.buchananTextBox.Location = new System.Drawing.Point(178, 110);
+            this.buchananTextBox.MaxLength = 2;
             this.buchananTextBox.Name = "buchananTextBox";
             this.buchananTextBox.Size = new System.Drawing.Size(39, 22);
             this.buchananTextBox.TabIndex = 25;
@@ -410,6 +414,7 @@
             // pierceTextBox
             // 
             this.pierceTextBox.Location = new System.Drawing.Point(178, 137);
+            this.pierceTextBox.MaxLength = 2;
             this.pierceTextBox.Name = "pierceTextBox";
             this.pierceTextBox.Size = new System.Drawing.Size(39, 22);
             this.pierceTextBox.TabIndex = 26;
@@ -418,6 +423,7 @@
             // bushTextBox
             // 
             this.bushTextBox.Location = new System.Drawing.Point(178, 163);
+            this.bushTextBox.MaxLength = 2;
             this.bushTextBox.Name = "bushTextBox";
             this.bushTextBox.Size = new System.Drawing.Size(39, 22);
             this.bushTextBox.TabIndex = 27;
@@ -426,6 +432,7 @@
             // obamaTextBox
             // 
             this.obamaTextBox.Location = new System.Drawing.Point(178, 190);
+            this.obamaTextBox.MaxLength = 2;
             this.obamaTextBox.Name = "obamaTextBox";
             this.obamaTextBox.Size = new System.Drawing.Size(39, 22);
             this.obamaTextBox.TabIndex = 28;
@@ -434,6 +441,7 @@
             // kennedyTextBox
             // 
             this.kennedyTextBox.Location = new System.Drawing.Point(178, 217);
+            this.kennedyTextBox.MaxLength = 2;
             this.kennedyTextBox.Name = "kennedyTextBox";
             this.kennedyTextBox.Size = new System.Drawing.Size(39, 22);
             this.kennedyTextBox.TabIndex = 29;
@@ -442,14 +450,17 @@
             // jeffersonTextBox
             // 
             this.jeffersonTextBox.Location = new System.Drawing.Point(384, 217);
+            this.jeffersonTextBox.MaxLength = 2;
             this.jeffersonTextBox.Name = "jeffersonTextBox";
             this.jeffersonTextBox.Size = new System.Drawing.Size(39, 22);
             this.jeffersonTextBox.TabIndex = 37;
             this.jeffersonTextBox.Text = "0";
+            this.jeffersonTextBox.TextChanged += new System.EventHandler(this.jeffersonTextBox_TextChanged);
             // 
             // theodoreRooseveltTextBox
             // 
             this.theodoreRooseveltTextBox.Location = new System.Drawing.Point(384, 190);
+            this.theodoreRooseveltTextBox.MaxLength = 2;
             this.theodoreRooseveltTextBox.Name = "theodoreRooseveltTextBox";
             this.theodoreRooseveltTextBox.Size = new System.Drawing.Size(39, 22);
             this.theodoreRooseveltTextBox.TabIndex = 36;
@@ -458,6 +469,7 @@
             // adamsTextBox
             // 
             this.adamsTextBox.Location = new System.Drawing.Point(384, 163);
+            this.adamsTextBox.MaxLength = 2;
             this.adamsTextBox.Name = "adamsTextBox";
             this.adamsTextBox.Size = new System.Drawing.Size(39, 22);
             this.adamsTextBox.TabIndex = 35;
@@ -466,6 +478,7 @@
             // washingtonTextBox
             // 
             this.washingtonTextBox.Location = new System.Drawing.Point(384, 137);
+            this.washingtonTextBox.MaxLength = 2;
             this.washingtonTextBox.Name = "washingtonTextBox";
             this.washingtonTextBox.Size = new System.Drawing.Size(39, 22);
             this.washingtonTextBox.TabIndex = 34;
@@ -474,6 +487,7 @@
             // vanburenTextBox
             // 
             this.vanburenTextBox.Location = new System.Drawing.Point(384, 110);
+            this.vanburenTextBox.MaxLength = 2;
             this.vanburenTextBox.Name = "vanburenTextBox";
             this.vanburenTextBox.Size = new System.Drawing.Size(39, 22);
             this.vanburenTextBox.TabIndex = 33;
@@ -482,6 +496,7 @@
             // eisenhowerTextBox
             // 
             this.eisenhowerTextBox.Location = new System.Drawing.Point(384, 83);
+            this.eisenhowerTextBox.MaxLength = 2;
             this.eisenhowerTextBox.Name = "eisenhowerTextBox";
             this.eisenhowerTextBox.Size = new System.Drawing.Size(39, 22);
             this.eisenhowerTextBox.TabIndex = 32;
@@ -490,6 +505,7 @@
             // reaganTextBox
             // 
             this.reaganTextBox.Location = new System.Drawing.Point(384, 56);
+            this.reaganTextBox.MaxLength = 2;
             this.reaganTextBox.Name = "reaganTextBox";
             this.reaganTextBox.Size = new System.Drawing.Size(39, 22);
             this.reaganTextBox.TabIndex = 31;
@@ -498,6 +514,7 @@
             // mckinleyTextBox
             // 
             this.mckinleyTextBox.Location = new System.Drawing.Point(384, 30);
+            this.mckinleyTextBox.MaxLength = 2;
             this.mckinleyTextBox.Name = "mckinleyTextBox";
             this.mckinleyTextBox.Size = new System.Drawing.Size(39, 22);
             this.mckinleyTextBox.TabIndex = 30;
