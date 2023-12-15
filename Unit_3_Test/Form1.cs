@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+using TextBox = System.Windows.Forms.TextBox;
 
 namespace Unit_3_Test
 {
@@ -34,6 +35,24 @@ jefferson
 	public partial class Form1 : Form
 	{
 		bool testPassed = false;
+
+		const int harrison = 23;
+		const int franklinRoosevelt = 32;
+		const int clinton = 42;
+		const int buchanan = 15;
+		const int pierce = 14;
+		const int bush = 43;
+		const int obama = 44;
+		const int kennedy = 35;
+		const int mckinley = 25;
+		const int reagan = 40;
+		const int eisenhower = 34;
+		const int vanburen = 8;
+		const int washington = 1;
+		const int adams = 2;
+		const int theodoreRoosevelt = 26;
+		const int jefferson = 3;
+
 		public Form1()
 		{
 			InitializeComponent();
@@ -41,24 +60,16 @@ jefferson
 			//start form with harrison's information going
 			harrisonRadioButton.Checked = true;
 			pictureBox.Image = Unit_3_Test.Properties.Resources.BenjaminHarrison;
+			filterAllRadioButton.Checked = true;
 
 			//set up tooltips for each president's text box
-			toolTip.SetToolTip(harrisonTextBox, "Which # President?");
-			toolTip.SetToolTip(franklinRooseveltTextBox, "Which # President?");
-			toolTip.SetToolTip(clintonTextBox, "Which # President?");
-			toolTip.SetToolTip(buchananTextBox, "Which # President?");
-			toolTip.SetToolTip(pierceTextBox, "Which # President?");
-			toolTip.SetToolTip(bushTextBox, "Which # President?");
-			toolTip.SetToolTip(obamaTextBox, "Which # President?");
-			toolTip.SetToolTip(kennedyTextBox, "Which # President?");
-			toolTip.SetToolTip(mckinleyTextBox, "Which # President?");
-			toolTip.SetToolTip(reaganTextBox, "Which # President?");
-			toolTip.SetToolTip(eisenhowerTextBox, "Which # President?");
-			toolTip.SetToolTip(vanburenTextBox, "Which # President?");
-			toolTip.SetToolTip(washingtonTextBox, "Which # President?");
-			toolTip.SetToolTip(adamsTextBox, "Which # President?");
-			toolTip.SetToolTip(theodoreRooseveltTextBox, "Which # President?");
-			toolTip.SetToolTip(jeffersonTextBox, "Which # President?");
+			foreach (Control control in Controls)
+			{
+				if (control.GetType() == typeof(System.Windows.Forms.TextBox))
+				{
+					toolTip.SetToolTip(control, "Which # President?");
+				}
+			}
 
 			//set up pictureBox 
 			pictureBox.MouseHover += new EventHandler(PictureBox__MouseHover);
@@ -82,29 +93,74 @@ jefferson
 			theodoreRooseveltRadioButton.CheckedChanged += new EventHandler(TheodoreRooseveltRadioButton__CheckChanged);
 			jeffersonRadioButton.CheckedChanged += new EventHandler(JeffersonRadioButton__CheckChanged);
 
+			//set up president text boxes 
+			harrisonTextBox.KeyPress += new KeyPressEventHandler(HarrisonTextBox__KeyPress);
+			franklinRooseveltTextBox.KeyPress += new KeyPressEventHandler(FranklinRooseveltTextBox__KeyPress);
+			clintonTextBox.KeyPress += new KeyPressEventHandler(ClintonTextBox__KeyPress);
+			buchananTextBox.KeyPress += new KeyPressEventHandler(BuchananTextBox__KeyPress);
+			pierceTextBox.KeyPress += new KeyPressEventHandler(PierceTextBox__KeyPress);
+			bushTextBox.KeyPress += new KeyPressEventHandler(BushTextBox__KeyPress);
+			obamaTextBox.KeyPress += new KeyPressEventHandler(ObamaTextBox__KeyPress);
+			kennedyTextBox.KeyPress += new KeyPressEventHandler(KennedyTextBox__KeyPress);
+			mckinleyTextBox.KeyPress += new KeyPressEventHandler(MckinleyTextBox__KeyPress);
+			reaganTextBox.KeyPress += new KeyPressEventHandler(ReaganTextBox__KeyPress);
+			eisenhowerTextBox.KeyPress += new KeyPressEventHandler(EisenhowerTextBox__KeyPress);
+			vanburenTextBox.KeyPress += new KeyPressEventHandler(VanburenTextBox__KeyPress);
+			washingtonTextBox.KeyPress += new KeyPressEventHandler(WashingtonTextBox__KeyPress);
+			adamsTextBox.KeyPress += new KeyPressEventHandler(AdamsTextBox__KeyPress);
+			theodoreRooseveltTextBox.KeyPress += new KeyPressEventHandler(TheodoreRooseveltTextBox__KeyPress);
+			jeffersonTextBox.KeyPress += new KeyPressEventHandler(JeffersonTextBox__KeyPress);
+
 			//Set up timer
 			timer.Tick += new EventHandler(Timer__Tick);
+			timer.Interval = 1000;
+
+			//Set up Filter buttons
+			filterAllRadioButton.CheckedChanged += new EventHandler(FilterAllRadioButton__CheckChanged);
+			filterDemocratRadioButton.CheckedChanged += new EventHandler(FilterDemocratRadioButton__CheckChanged);
+			filterRepublicanRadioButton.CheckedChanged += new EventHandler(FilterRepublicanRadioButton__CheckChanged);
+			filterDemocraticRepublicanRadioButton.CheckedChanged += new EventHandler(FilterDemocraticRepublicanRadioButton__CheckChanged);
+			filterFederalistRadioButton.CheckedChanged += new EventHandler(FilterFederalistRadioButton__CheckChanged);
 
 			//Set up progress bar
 			progressBar.Value = 180;
 
 			//initialize exitButton as disabled
 			exitButton.Enabled = false;
-			
+			exitButton.Click += new EventHandler(ExitButton__Click);
 		}
 
-		//Method to update the progress bar as timer ticks, and ends timer if test is successfully passed
-		private void Timer__Tick(object sender, EventArgs e)
+		
+        private void ExitButton__Click(object sender, EventArgs e)
+        {
+			this.Close();
+        }
+
+        //Method to update the progress bar as timer ticks, and ends timer if test is successfully passed
+        private void Timer__Tick(object sender, EventArgs e)
 		{
 			progressBar.Value--;
 			if (progressBar.Value == progressBar.Minimum)
 			{
 				timer.Stop();
-			}
-			else if (testPassed)
+				progressBar.Value = progressBar.Maximum;
+                foreach (Control control in Controls)
+                {
+                    if (control.GetType() == typeof(System.Windows.Forms.TextBox))
+                    {
+                        TextBox textBox = (TextBox)control;
+						textBox.Text = "0";
+
+                    }
+                }
+
+            }
+			else if (CheckComplete() == true)
 			{
 				timer.Stop();
 				exitButton.Enabled = true;
+				webBrowserGroupBox.Text = "https://media.giphy.com/media/TmT51OyQLFD7a/giphy.gif";
+                webBrowser.Url = new Uri("https://media.giphy.com/media/TmT51OyQLFD7a/giphy.gif");
 			}
 		}
 
@@ -120,9 +176,123 @@ jefferson
 			pictureBox.Size = new Size(153, 224);
 		}
 
-		//Radio Check Changed buttons for each president that updates the text of the web groupbox, the photo in picturebox,
-		// and the website displayed in the web browser.
-			private void HarrisonRadioButton__CheckChanged(object sender, EventArgs e)
+		//Radio Check Changed buttons for each Filter button that updates which presidents are shown
+		
+		private void FilterAllRadioButton__CheckChanged(object sender, EventArgs e)
+		{
+			harrisonRadioButton.Visible = true;
+            franklinRooseveltRadioButton.Visible = true;
+            clintonRadioButton.Visible = true;
+            buchananRadioButton.Visible = true;
+            pierceRadioButton.Visible = true;
+            bushRadioButton.Visible = true;
+            obamaRadioButton.Visible = true;
+            kennedyRadioButton.Visible = true;
+            mckinleyRadioButton.Visible = true;
+            reaganRadioButton.Visible = true;
+            eisenhowerRadioButton.Visible = true;
+            vanburenRadioButton.Visible = true;
+            washingtonRadioButton.Visible = true;
+            adamsRadioButton.Visible = true;
+            theodoreRooseveltRadioButton.Visible = true;
+            jeffersonRadioButton.Visible = true;
+
+            harrisonRadioButton.Checked = true;
+        }
+
+        
+        private void FilterDemocratRadioButton__CheckChanged(object sender, EventArgs e)
+        {
+            harrisonRadioButton.Visible = false;
+            franklinRooseveltRadioButton.Visible = true;
+            clintonRadioButton.Visible = true;
+            buchananRadioButton.Visible = true;
+            pierceRadioButton.Visible = true;
+            bushRadioButton.Visible = false;
+            obamaRadioButton.Visible = true;
+            kennedyRadioButton.Visible = true;
+            mckinleyRadioButton.Visible = false;
+            reaganRadioButton.Visible = false;
+            eisenhowerRadioButton.Visible = false;
+            vanburenRadioButton.Visible = true;
+            washingtonRadioButton.Visible = false;
+            adamsRadioButton.Visible = false;
+            theodoreRooseveltRadioButton.Visible = false;
+            jeffersonRadioButton.Visible = false;
+
+            franklinRooseveltRadioButton.Checked = true;
+        }
+        private void FilterRepublicanRadioButton__CheckChanged(object sender, EventArgs e)
+        {
+            harrisonRadioButton.Visible = true;
+            franklinRooseveltRadioButton.Visible = false;
+            clintonRadioButton.Visible = false;
+            buchananRadioButton.Visible = false;
+            pierceRadioButton.Visible = false;
+            bushRadioButton.Visible = true;
+            obamaRadioButton.Visible = false;
+            kennedyRadioButton.Visible = false;
+            mckinleyRadioButton.Visible = true;
+            reaganRadioButton.Visible = true;
+            eisenhowerRadioButton.Visible = true;
+            vanburenRadioButton.Visible = false;
+            washingtonRadioButton.Visible = false;
+            adamsRadioButton.Visible = false;
+            theodoreRooseveltRadioButton.Visible = true;
+            jeffersonRadioButton.Visible = false;
+
+            harrisonRadioButton.Checked = true;
+
+        }
+        private void FilterDemocraticRepublicanRadioButton__CheckChanged(object sender, EventArgs e)
+        {
+            harrisonRadioButton.Visible = false;
+            franklinRooseveltRadioButton.Visible = false;
+            clintonRadioButton.Visible = false;
+            buchananRadioButton.Visible = false;
+            pierceRadioButton.Visible = false;
+            bushRadioButton.Visible = false;
+            obamaRadioButton.Visible = false;
+            kennedyRadioButton.Visible = false;
+            mckinleyRadioButton.Visible = false;
+            reaganRadioButton.Visible = false;
+            eisenhowerRadioButton.Visible = false;
+            vanburenRadioButton.Visible = false;
+            washingtonRadioButton.Visible = false;
+            adamsRadioButton.Visible = false;
+            theodoreRooseveltRadioButton.Visible = false;
+            jeffersonRadioButton.Visible = true;
+
+            jeffersonRadioButton.Checked = true;
+
+        }
+        private void FilterFederalistRadioButton__CheckChanged(object sender, EventArgs e)
+        {
+            harrisonRadioButton.Visible = false;
+            franklinRooseveltRadioButton.Visible = false;
+            clintonRadioButton.Visible = false;
+            buchananRadioButton.Visible = false;
+            pierceRadioButton.Visible = false;
+            bushRadioButton.Visible = false;
+            obamaRadioButton.Visible = false;
+            kennedyRadioButton.Visible = false;
+            mckinleyRadioButton.Visible = false;
+            reaganRadioButton.Visible = false;
+            eisenhowerRadioButton.Visible = false;
+            vanburenRadioButton.Visible = false;
+            washingtonRadioButton.Visible = true;
+            adamsRadioButton.Visible = true;
+            theodoreRooseveltRadioButton.Visible = false;
+            jeffersonRadioButton.Visible = false;
+
+			washingtonRadioButton.Checked = true;
+
+        }
+
+        //Radio Check Changed buttons for each president that updates the text of the web groupbox, the photo in picturebox,
+        // and the website displayed in the web browser.
+        #region President Button Checkchanged events
+        private void HarrisonRadioButton__CheckChanged(object sender, EventArgs e)
 			{
 				UpdatePresident("Benjamin_Harrison");
 			}
@@ -187,10 +357,137 @@ jefferson
 			{
 				UpdatePresident("Thomas_Jefferson");
 			}
+        #endregion
+        //adds a popup if the answer is wrong
+        
+        private void HarrisonTextBox__KeyPress(object sender, KeyPressEventArgs e)
+		{
+			KeyPressChecks(e);
+            ValidatePresident(harrisonTextBox, harrison);
+			
+        }
 
+		private void FranklinRooseveltTextBox__KeyPress(object sender, KeyPressEventArgs e)
+		{
+			KeyPressChecks(e);
+            ValidatePresident(franklinRooseveltTextBox, franklinRoosevelt);
+			
+        }
+		private void ClintonTextBox__KeyPress(object sender, KeyPressEventArgs e)
+		{
+			KeyPressChecks(e);
+            ValidatePresident(clintonTextBox, clinton);
+			
+        }
+        private void BuchananTextBox__KeyPress(object sender, KeyPressEventArgs e)
+        {
+            KeyPressChecks(e);
+            ValidatePresident(buchananTextBox, buchanan);
 
+        }
+        private void PierceTextBox__KeyPress(object sender, KeyPressEventArgs e)
+        {
+            KeyPressChecks(e);
+            ValidatePresident(pierceTextBox, pierce);
 
+        }
+        private void BushTextBox__KeyPress(object sender, KeyPressEventArgs e)
+        {
+            KeyPressChecks(e);
+            ValidatePresident(bushTextBox, bush);
 
+        }
+        private void ObamaTextBox__KeyPress(object sender, KeyPressEventArgs e)
+        {
+            KeyPressChecks(e);
+            ValidatePresident(obamaTextBox, obama);
+
+        }
+        private void KennedyTextBox__KeyPress(object sender, KeyPressEventArgs e)
+        {
+            KeyPressChecks(e);
+            ValidatePresident(kennedyTextBox, kennedy);
+
+        }
+        private void MckinleyTextBox__KeyPress(object sender, KeyPressEventArgs e)
+        {
+            KeyPressChecks(e);
+            ValidatePresident(mckinleyTextBox, mckinley);
+
+        }
+        private void ReaganTextBox__KeyPress(object sender, KeyPressEventArgs e)
+        {
+            KeyPressChecks(e);
+            ValidatePresident(reaganTextBox, reagan);
+
+        }
+        private void EisenhowerTextBox__KeyPress(object sender, KeyPressEventArgs e)
+        {
+            KeyPressChecks(e);
+            ValidatePresident(eisenhowerTextBox, eisenhower);
+
+        }
+        private void VanburenTextBox__KeyPress(object sender, KeyPressEventArgs e)
+        {
+            KeyPressChecks(e);
+            ValidatePresident(vanburenTextBox, vanburen);
+
+        }
+        private void WashingtonTextBox__KeyPress(object sender, KeyPressEventArgs e)
+        {
+            KeyPressChecks(e);
+            ValidatePresident(washingtonTextBox, washington);
+
+        }
+        private void AdamsTextBox__KeyPress(object sender, KeyPressEventArgs e)
+        {
+            KeyPressChecks(e);
+            ValidatePresident(adamsTextBox, adams);
+
+        }
+        private void TheodoreRooseveltTextBox__KeyPress(object sender, KeyPressEventArgs e)
+        {
+            KeyPressChecks(e);
+            ValidatePresident(theodoreRooseveltTextBox, theodoreRoosevelt);
+
+        }
+        private void JeffersonTextBox__KeyPress(object sender, KeyPressEventArgs e)
+        {
+            KeyPressChecks(e);
+            ValidatePresident(jeffersonTextBox, jefferson);
+
+        }
+
+        #region Helper Methods 
+        //Starts timer if it has not already started, and checks that input is a number
+        private void KeyPressChecks(KeyPressEventArgs e)
+		{
+            if (!(timer.Enabled))
+            {
+                timer.Start();
+            }
+            // Allow only digits and control characters
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+
+                e.Handled = true;
+            }
+        }
+		//Checks if a president's text box has the correct answer in it, returns bool
+        private bool ValidatePresident(System.Windows.Forms.TextBox textBox, int president)
+        {
+            if (textBox.Text == president.ToString())
+            {
+                errorProvider.SetError(textBox, string.Empty);
+                return true;
+
+            }
+            else
+            {
+                errorProvider.SetError(textBox, "That is the wrong number.");
+                return false;
+            }
+        }
 
         //method to update the web address, web browser group box text, and image based on which president's name is passed in
         public void UpdatePresident(string president)
@@ -286,6 +583,35 @@ jefferson
 					break;
 			}
 
+		}
+
+		//Checks if the quiz has been properly completed
+		private bool CheckComplete()
+		{
+			if (ValidatePresident(harrisonTextBox, harrison) &&
+                ValidatePresident(franklinRooseveltTextBox, franklinRoosevelt) &&
+                ValidatePresident(clintonTextBox, clinton) &&
+                ValidatePresident(buchananTextBox, buchanan) &&
+                ValidatePresident(pierceTextBox, pierce) &&
+                ValidatePresident(bushTextBox,bush) &&
+                ValidatePresident(obamaTextBox,obama) &&
+                ValidatePresident(kennedyTextBox,kennedy) &&
+                ValidatePresident(mckinleyTextBox,mckinley) &&
+                ValidatePresident(reaganTextBox,reagan) &&
+                ValidatePresident(eisenhowerTextBox,eisenhower) &&
+                ValidatePresident(vanburenTextBox,vanburen) &&
+                ValidatePresident(washingtonTextBox,washington) &&
+                ValidatePresident(adamsTextBox, adams) &&
+                ValidatePresident(theodoreRooseveltTextBox, theodoreRoosevelt) &&
+                ValidatePresident(jeffersonTextBox, jefferson)
+                )
+			{
+				return true;
+			}
+			else
+			{
+				return false;
+			}
 		}
 
 		//auto generated methods I dont know how to get rid of

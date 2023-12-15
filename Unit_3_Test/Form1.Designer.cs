@@ -74,9 +74,11 @@
             this.mckinleyTextBox = new System.Windows.Forms.TextBox();
             this.timer = new System.Windows.Forms.Timer(this.components);
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
+            this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
             this.webBrowserGroupBox.SuspendLayout();
             this.filterGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
             this.SuspendLayout();
             // 
             // progressBar
@@ -524,6 +526,12 @@
             // 
             this.toolTip.IsBalloon = true;
             // 
+            // errorProvider
+            // 
+            this.errorProvider.BlinkRate = 0;
+            this.errorProvider.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink;
+            this.errorProvider.ContainerControl = this;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -573,6 +581,7 @@
             this.filterGroupBox.ResumeLayout(false);
             this.filterGroupBox.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -625,6 +634,7 @@
         private System.Windows.Forms.TextBox mckinleyTextBox;
         private System.Windows.Forms.Timer timer;
         private System.Windows.Forms.ToolTip toolTip;
+        private System.Windows.Forms.ErrorProvider errorProvider;
     }
 }
 
