@@ -12,30 +12,10 @@ using TextBox = System.Windows.Forms.TextBox;
 
 namespace Unit_3_Test
 {
-	/*
-	 * 
-harrison
-franklinRoosevelt
-clinton
-buchanan
-pierce
-bush
-obama
-kennedy
-mckinley
-reagan
-eisenhower
-vanburen
-washington
-adams
-theodoreRoosevelt
-jefferson
-	 * 
-	 */
+	
 	public partial class Form1 : Form
 	{
-		bool testPassed = false;
-
+		//Constants for the correct answers for all presidents
 		const int harrison = 23;
 		const int franklinRoosevelt = 32;
 		const int clinton = 42;
