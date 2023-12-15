@@ -73,6 +73,7 @@
             this.reaganTextBox = new System.Windows.Forms.TextBox();
             this.mckinleyTextBox = new System.Windows.Forms.TextBox();
             this.timer = new System.Windows.Forms.Timer(this.components);
+            this.toolTip = new System.Windows.Forms.ToolTip(this.components);
             this.webBrowserGroupBox.SuspendLayout();
             this.filterGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).BeginInit();
@@ -502,6 +503,10 @@
             this.mckinleyTextBox.TabIndex = 30;
             this.mckinleyTextBox.Text = "0";
             // 
+            // toolTip
+            // 
+            this.toolTip.IsBalloon = true;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -602,6 +607,7 @@
         private System.Windows.Forms.TextBox reaganTextBox;
         private System.Windows.Forms.TextBox mckinleyTextBox;
         private System.Windows.Forms.Timer timer;
+        private System.Windows.Forms.ToolTip toolTip;
     }
 }
 
